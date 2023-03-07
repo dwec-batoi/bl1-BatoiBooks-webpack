@@ -1,0 +1,22 @@
+{
+  "name": "batoibooks",
+  "version": "1.0.0",
+  "description": "Como parte de una aplicación para vendre libros de texto y apuntes vamos a hacer unas funciones para obtener determinados libros, así como datos de usuarios y de módulos. Los datos con los que trabaja la aplicación los tenemos en el fichero `datos.js` en una variable llamada `data` que contiene los siguientes campos: - **courses**: son los distintos ciclos del centro. El campo _idFamily_ FK de la tabla _families_ - **families**: los departamentos - **modules**: los distintos módulos que se estudian en cada ciclo. EL campo _idCourse_ es la FK de la tabla _courses_ - **sales**: donde se registran las ventas producidas - **users**: datos de los usuarios registrados en la aplicación - **books**: libros y apuntes en venta. Sus campos son:   - _id_   - _idUser_: FK de la tabla _users_   - _idModule_: FK de la tabla _modules_   - _publisher_: editorial que publica el libro. Si son apuntes su valor es \"Apunts\"   - _price_: precio (numérico)   - _pages_: páginas del libro/apuntes (numérico)   - _status_: estado del libro que puede tomar uno de los valores \"new\", \"good\", \"used\", \"bad\"   - _photo_: ruta a la foto   - _comments_: comentarios   - _solDate_: fecha de venta del libro, en formato YYYY-MM-DD. Si aún no está vendido este campo estará en blanco",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwec-batoi/bl1-js-BatoiBooks.git"
+  },
+  "author": "Juan Segura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dwec-batoi/bl1-js-BatoiBooks/issues"
+  },
+  "homepage": "https://github.com/dwec-batoi/bl1-js-BatoiBooks#readme"
+}

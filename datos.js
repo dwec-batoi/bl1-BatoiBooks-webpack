@@ -1866,7 +1866,7 @@ const data = {
       "id": 1,
       "idUser": 2,
       "idModule": "5025",
-      "publisher": "Apuntes",
+      "publisher": "Apunts",
       "price": 12,
       "pages": 25,
       "status": "good",
