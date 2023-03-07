@@ -56,6 +56,11 @@ module.exports = {
 }
 ```
 
+En el `index.js` mostraremos por consola:
+- todos los libros del usuario 4
+- todos los libros del módulo 5021 que están en buen estado ("good")
+- incrementa un 10% el precio de los libros del módulo 5025 y mu
+
 En el fichero _**index.html**_ deberemos enlazar los 3 scripts: primero el _datos.js_, luego el _functions.js_ y por último el _index.js_.
 
 **IMPORTANTE**: no usaremos **ningún _for_** para recorrer los arrays. Siempre que sea posible usaremos _Functional Programming_.
