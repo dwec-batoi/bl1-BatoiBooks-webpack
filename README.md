@@ -32,8 +32,8 @@ Para poder pasar los tests a nuestro programa y comprobar si funciona repartirem
   - **getUserById(array, number) : object**: recibe el array de usuarios y una id y devuelve el usuario con dicha id
   - **getUserIndexById(array, number) : object**: igual pero devuelve la posición del usuario dentro del array _users_
   - **getUserByNickName(array, string) : object**: recibe el array de usuarios y un nombre de usuario (_nick_) y devuelve el usuario con dicho _nick_
-  - **getModuleById(array, number) : object**: recibe el array de módulos y una id y devuelve el módulo con dicha id
-  - **getModuleIndexById(array, number) : object**: igual pero devuelve la posición del módulo dentro del array _modules_
+  - **getModuleByCode(array, string) : object**: recibe el array de módulos y un código y devuelve el módulo con dicho código (campo _code_)
+  - **getModuleIndexByCode(array, string) : object**: igual pero devuelve la posición del módulo dentro del array _modules_
 
 Recuerda que para poder testear el código como en el ejercicio anterior al final del fichero debemos añadir la instrucción:
 
@@ -51,8 +51,8 @@ module.exports = {
   getUserById,
   getUserIndexById,
   getUserByNickName,
-  getModuleById,
-  getModuleIndexById
+  getModuleByCode,
+  getModuleIndexByCode
 }
 ```
 
