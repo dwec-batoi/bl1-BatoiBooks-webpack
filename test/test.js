@@ -192,23 +192,23 @@ describe('Funciones con módulos', () => {
     },
   ]
 
-  test('getModuleById encuentra un módulo que existe', () => {
-    expect(functions.getModuleById(modules, 'DWES')).toEqual({
+  test('getModuleByCode encuentra un módulo que existe', () => {
+    expect(functions.getModuleByCode(modules, 'DWES')).toEqual({
       id: 2,
       code: 'DWES'
     });
   })
 
-  test('getModuleById devuelve un objeto vacío si el módulo no existe', () => {
-    expect(functions.getModuleById(modules, 'AAAA')).toEqual({});
+  test('getModuleByCode devuelve un objeto vacío si el módulo no existe', () => {
+    expect(functions.getModuleByCode(modules, 'AAAA')).toEqual({});
   });
 
-  test('getModuleIndexById encuentra un módulo que existe', () => {
-    expect(functions.getModuleIndexById(modules, 'DWES')).toBe(1);
+  test('getModuleIndexByCode encuentra un módulo que existe', () => {
+    expect(functions.getModuleIndexByCode(modules, 'DWES')).toBe(1);
   });
 
-  test('getModuleIndexById devuelve un objeto vacío si el módulo no existe', () => {
-    expect(functions.getModuleIndexById(modules, 'AAAA')).toBe(-1);
+  test('getModuleIndexByCode devuelve un objeto vacío si el módulo no existe', () => {
+    expect(functions.getModuleIndexByCode(modules, 'AAAA')).toBe(-1);
   });
 })
 
