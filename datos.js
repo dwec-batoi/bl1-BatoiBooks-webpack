@@ -2,182 +2,182 @@ const data = {
   "courses": [
     {
       "id": "3",
-      "cycle": "CFM APD (LOE)",
+      "course": "CFM APD (LOE)",
       "idFamily": "2",
       "vliteral": "Atenció a persones en situació de dependència",
       "cliteral": "Atención a personas en situación de dependencia"
     },
     {
       "id": "4",
-      "cycle": "CFM FARMACIA (LOE)",
+      "course": "CFM FARMACIA (LOE)",
       "idFamily": "6",
       "vliteral": "Farmàcia i parafarmàcia",
       "cliteral": "Farmacia y parafarmacia"
     },
     {
       "id": "8",
-      "cycle": "CFM CAE (LOGSE)",
+      "course": "CFM CAE (LOGSE)",
       "idFamily": "6",
       "vliteral": "Cures auxiliares d'infermeria",
       "cliteral": "Cuidados auxiliares de enfermería"
     },
     {
       "id": "12",
-      "cycle": "CFM CUINA (LOE)",
+      "course": "CFM CUINA (LOE)",
       "idFamily": "10",
       "vliteral": "Cuina i gastronomia",
       "cliteral": "Cocina y gastronomía"
     },
     {
       "id": "16",
-      "cycle": "CFM ESTÈTICA I BELL. (LOE)",
+      "course": "CFM ESTÈTICA I BELL. (LOE)",
       "idFamily": "3",
       "vliteral": "Estètica i bellesa",
       "cliteral": "Estética y belleza"
     },
     {
       "id": "18",
-      "cycle": "CFM GESTIÓ ADMVA. (LOE)",
+      "course": "CFM GESTIÓ ADMVA. (LOE)",
       "idFamily": "5",
       "vliteral": "Gestió administrativa",
       "cliteral": "Gestión administrativa"
     },
     {
       "id": "20",
-      "cycle": "CFM PERRUQUERIA (LOE)",
+      "course": "CFM PERRUQUERIA (LOE)",
       "idFamily": "3",
       "vliteral": "Perruqueria i cosmètica capilar",
       "cliteral": "Peluquería y cosmética capilar"
     },
     {
       "id": "22",
-      "cycle": "CFM SERV. RESTAURACIÓ (LOE)",
+      "course": "CFM SERV. RESTAURACIÓ (LOE)",
       "idFamily": "10",
       "vliteral": "Servicis en restauració",
       "cliteral": "Servicios en restauración"
     },
     {
       "id": "24",
-      "cycle": "CFM SMX  (LOE)",
+      "course": "CFM SMX  (LOE)",
       "idFamily": "24",
       "vliteral": "Sistemes microinformàtics i xarxes",
       "cliteral": "Sistemas microinformáticos y redes"
     },
     {
       "id": "28",
-      "cycle": "CFS ADM. I FINANC. (LOE)",
+      "course": "CFS ADM. I FINANC. (LOE)",
       "idFamily": "5",
       "vliteral": "Administració i finances",
       "cliteral": "Administración y finanzas"
     },
     {
       "id": "29",
-      "cycle": "CFS ASSISTENCIA A LA DIRECCIÓ (LOE)",
+      "course": "CFS ASSISTENCIA A LA DIRECCIÓ (LOE)",
       "idFamily": "5",
       "vliteral": "Assitència a la direcció",
       "cliteral": "Asistencia a la dirección"
     },
     {
       "id": "30",
-      "cycle": "CFS ASIX (LOE)",
+      "course": "CFS ASIX (LOE)",
       "idFamily": "24",
       "vliteral": "Administració de sistemes informàtics en xarxa",
       "cliteral": "Administración de sistemas informáticos en red"
     },
     {
       "id": "32",
-      "cycle": "CFS DAM (LOE)",
+      "course": "CFS DAM (LOE)",
       "idFamily": "24",
       "vliteral": "Desenrotllament d'aplicacions multiplataforma",
       "cliteral": "Desarrollo de aplicaciones multiplataforma"
     },
     {
       "id": "35",
-      "cycle": "CFS DAW (LOE)",
+      "course": "CFS DAW (LOE)",
       "idFamily": "24",
       "vliteral": "Desenrotllament d'aplicacions web",
       "cliteral": "Desarrollo de aplicaciones  web"
     },
     {
       "id": "36",
-      "cycle": "CFS DIREC. CUINA (LOE)",
+      "course": "CFS DIREC. CUINA (LOE)",
       "idFamily": "10",
       "vliteral": "Direcció de cuina",
       "cliteral": "Dirección de cocina"
     },
     {
       "id": "38",
-      "cycle": "CFS DIREC.RESTAURACIÓ (LOE)",
+      "course": "CFS DIREC.RESTAURACIÓ (LOE)",
       "idFamily": "10",
       "vliteral": "Direcció en servicis de restauració",
       "cliteral": "Dirección en servicios de restauración"
     },
     {
       "id": "39",
-      "cycle": "CFS EDUC.INFANTIL (LOE)",
+      "course": "CFS EDUC.INFANTIL (LOE)",
       "idFamily": "2",
       "vliteral": "Educació infantil",
       "cliteral": "Educación infantil"
     },
     {
       "id": "42",
-      "cycle": "CFS ESTET.INTEG. (LOE)",
+      "course": "CFS ESTET.INTEG. (LOE)",
       "idFamily": "3",
       "vliteral": "Estètica integral i benestar",
       "cliteral": "Estética integral y bienestar"
     },
     {
       "id": "44",
-      "cycle": "CFS INTEGR.SOCIAL (LOE)",
+      "course": "CFS INTEGR.SOCIAL (LOE)",
       "idFamily": "2",
       "vliteral": "Integració Social",
       "cliteral": "Integración Social"
     },
     {
       "id": "45",
-      "cycle": "CFS LABORATORI (LOE)",
+      "course": "CFS LABORATORI (LOE)",
       "idFamily": "6",
       "vliteral": "Laboratori clínic i biomèdic",
       "cliteral": "Laboratorio clinico y biomédico"
     },
     {
       "id": "51",
-      "cycle": "CFS RXMN (LOE)",
+      "course": "CFS RXMN (LOE)",
       "idFamily": "6",
       "vliteral": "Imatge per al diagnòtic i medicina nuclear",
       "cliteral": "Imagen para el diagnóstico y medicina nuclear"
     },
     {
       "id": "54",
-      "cycle": "CFS SALUT AMBIENTAL (LOGSE)",
+      "course": "CFS SALUT AMBIENTAL (LOGSE)",
       "idFamily": "6",
       "vliteral": "Salut ambiental",
       "cliteral": "Salud ambiental"
     },
     {
       "id": "56",
-      "cycle": "CFS TASOCIT (LOE)",
+      "course": "CFS TASOCIT (LOE)",
       "idFamily": "2",
       "vliteral": "Animació Sociocultural i turística",
       "cliteral": "Animación Sociocultural y turística"
     },
     {
       "id": "57",
-      "cycle": "TPB Perruqueria i Estética",
+      "course": "TPB Perruqueria i Estética",
       "idFamily": "3",
       "vliteral": "FP Bàsica Perruqueria i Estètica",
       "cliteral": "FP Básica Peluqueria i Estética"
     },
     {
       "id": "58",
-      "cycle": "CFS QUIMICA I SALUT AMBIENTAL",
+      "course": "CFS QUIMICA I SALUT AMBIENTAL",
       "idFamily": "25",
       "vliteral": "Química i Salut Ambiental",
       "cliteral": "Química i Salut Ambiental"
     },
     {
       "id": "59",
-      "cycle": "MASTER CIBERSEGURETAT",
+      "course": "MASTER CIBERSEGURETAT",
       "idFamily": "24",
       "vliteral": "Curs d'EspecialiTzació en Ciberseguretat en Entorns de les Tecnologies de la Información",
       "cliteral": "Curso de Especialización en Ciberseguridad en Entornos de las Tecnologías de la Información"
