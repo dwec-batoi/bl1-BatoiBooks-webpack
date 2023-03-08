@@ -26,9 +26,9 @@ const NOTES = 'Apunts'
 
 // function getUserByNickName(array, string) : object 
 
-// function getModuleById(array, number) : object 
+// function getModuleByCode(array, string) : object 
 
-// function getModuleIndexById(array, number) : object 
+// function getModuleIndexByCode(array, string) : object 
 
 module.exports = {
   booksFromUser,
@@ -43,6 +43,6 @@ module.exports = {
   getUserById,
   getUserIndexById,
   getUserByNickName,
-  getModuleById,
-  getModuleIndexById
+  getModuleByCode,
+  getModuleIndexByCode
 }
