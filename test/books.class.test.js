@@ -89,7 +89,7 @@ describe('Clase books: constructor y addItem', () => {
   });
 })
 
-describe('Clase books: removeItem y toString', () => {
+describe('Clase books: removeItem, incrementPrice y toString', () => {
   beforeEach(() => {
     books = new Books()
     book1 = books.addItem(data[0])
