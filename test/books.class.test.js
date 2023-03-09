@@ -81,7 +81,7 @@ describe('Clase Books', () => {
   test('addItem asigna id a partir de la última existente', () => {
     const dataWithId = data.slice()
     dataWithId[0].id = 35
-    dataWithId[0].id = 31
+    dataWithId[1].id = 31
     dataWithId[2].id = 3
     const books = new Books()
     books.populateData(dataWithId)
@@ -187,7 +187,7 @@ describe('Clase Books', () => {
 
   test('averagePriceOfBooks devuelve 32.33 €', () => {
     const response = books.averagePriceOfBooks()
-    expect(response).toBeCloseTo('32.33 €')
+    expect(response).toBe('32.33 €')
   })
 
   test('booksOfTypeNote devuelve un array con el registro de apuntes', () => {
