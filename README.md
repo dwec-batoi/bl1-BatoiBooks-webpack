@@ -24,4 +24,3 @@ En las distintas ramas irás encontrando diferentes ejercicios para realizar has
 - [**4-DOM**](./enunciados/4-DOM.md): la daremos una interfaz gráfica a la aplicación usando el patrón MVC
 - [**6-Events**](./enunciados/6-Events.md): permitiremos al usuario interactuar con nuestra aplicación desde la interfaz gráfica
 - **8-Ajax**: trabajaremos la persistencia de los datos
-- 
