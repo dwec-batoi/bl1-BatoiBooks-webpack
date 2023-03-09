@@ -17,7 +17,7 @@ describe('Clase users: constructor y crear usuarios', () => {
     const users = new Users()
     const newUser = users.addItem({ email: 'asd@asd.es', nick: 'dsa' })
     expect(users.data.length).toBe(1)
-    expect(newModule).toBeInstanceOf(User)
+    expect(newUser).toBeInstanceOf(User)
     expect(newUser.id).toBe(1);
     expect(newUser.email).toBe('asd@asd.es');
     expect(newUser.nick).toBe('dsa');
@@ -34,11 +34,12 @@ describe('Clase users: constructor y crear usuarios', () => {
   });
 
   test('populateData añade un aray de usuarios', () => {
-    const users = new Users()
-    users.populateData([
+    const data = [
       { id:7, email: 'asd@asd.es', nick: 'dsa' },
       { id:3, email: 'usr@usr.es', nick: 'rsu' },
-    ])
+    ]
+    const users = new Users()
+    users.populateData(data)
     expect(users.data.length).toBe(2)
     for (let i in users.data) {
       expect(users.data[i]).toBeInstanceOf(User)
