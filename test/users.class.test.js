@@ -2,7 +2,7 @@ const Users = require('../src/model/users.class');
 
 let users, user1, user2
 
-describe('Clase users: constructor y addItem', () => {
+describe('Clase users: constructor y crear usuarios', () => {
 	test('Existe la clase Users', () => {
 		expect(Users).toBeDefined();
 	});
@@ -14,12 +14,47 @@ describe('Clase users: constructor y addItem', () => {
   
   test('addItem añade un nuevo usuario', () => {
     const users = new Users()
-    const newUser = users.addItem({ email: 'asd@asd.es', nick: 'dsa', password: '12' })
+    const newUser = users.addItem({ email: 'asd@asd.es', nick: 'dsa' })
     expect(users.data.length).toBe(1)
-    expect(newUser.id).toBeGreaterThanOrEqual(1);
+    expect(newUser.id).toBe(1);
     expect(newUser.email).toBe('asd@asd.es');
     expect(newUser.nick).toBe('dsa');
-    expect(newUser.password).toBe('12');
+  });
+
+  test('addItem asigna id consecutivas sin repetir', () => {
+    const users = new Users()
+    let newUser = users.addItem({ email: 'asd@asd.es', nick: 'dsa' })
+    expect(users.data.length).toBe(1)
+    expect(newUser.id).toBe(1);
+    newUser = users.addItem({ email: 'usr@usr.es', nick: 'rsu' })
+    expect(users.data.length).toBe(2)
+    expect(newUser.id).toBe(2);
+  });
+
+  test('populateData añade un aray de usuarios', () => {
+    const users = new Users()
+    users.populateData([
+      { id:7, email: 'asd@asd.es', nick: 'dsa' },
+      { id:3, email: 'usr@usr.es', nick: 'rsu' },
+    ])
+    expect(users.data.length).toBe(2)
+    for (let i in modules.data) {
+      expect(users.data[i]).toBeInstanceOf(User)
+      for (let prop in users.data[i]) {
+        expect(users.data[i][prop]).toBe(data[i][prop])
+      }
+    }
+  });
+
+  test('addItem asigna id a partir de la última existente', () => {
+    const users = new Users()
+    users.populateData([
+      { id:7, email: 'asd@asd.es', nick: 'dsa' },
+      { id:3, email: 'usr@usr.es', nick: 'rsu' },
+    ])
+    let newUser = users.addItem({ email: 'qwe@qwe.es', nick: 'ewq' })
+    expect(users.data.length).toBe(3)
+    expect(newUser.id).toBe(8);
   });
 })
 

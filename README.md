@@ -4,17 +4,20 @@ Continuando con nuestra aplicación para vender libros de texto y apuntes vamos 
 
 Como vamos a usar _webpack_ hemos cambiado el nombre de la carpeta con el código de `scripts` a `src` ya que _webpack_ compilará nuestro código y generará el fichero `/dist/main.js` que será en el vinculamos en el `index.html`.
 
-Dentro de `/src` crearemos una carpeta llamada `model` donde crearemos las clases. Aunque deberíamos hacerlas ya todas, al menos vamos a hacer aquellas con las que estamos trabajando: book, books, user, users, module_ y _modules_. 
+Dentro de `/src` crearemos una carpeta llamada `model` donde crearemos las clases. Aunque deberíamos hacerlas ya todas, al menos vamos a hacer aquellas con las que estamos trabajando: _book, books, user, users, module_ y _modules_. 
 
-Las clases de objeto (_Book_, _User_ y _Module_) tendrán un constructor y un método `toString`. En la clase _Book_ en vez del campo _idUser_ y _idModule_ crearemos los campos _user_ y _module_ donde guardaremos el objeto correspondiente (los objetos usuario y módulo completos de ese libro)
+Las clases de objeto (_Book_, _User_ y _Module_) tendrán
+- un constructor: recibe cada campo del objeto a crear, excepto en _Book_ que al ser muchos campos le pasareos un objeto con todos ellos 
+- un método `toString` para mostrar el objeto
 
 Las clases de array (_Books_, _Users_ y _Modules_) tendrán:
-- constructor para inicializar una propiedad llamada _data_ a un array vacío
-- `addItem` para añadir un nuevo elemento
-- `removeItem` para eliminar un elemento pasándole su _id_. Si no existe lanzará una excepción. Si intentamos eliminar un usuario o un módulo que tiene libros no se eliminará y también se lanzará una excepción
-- `getItemById` al que se le pasa una _id_ y devuelve el elemento con dicha _id_ o un objeto vacío si no existe (para _users_ y _modules_ ya los tenemos hechos)
+- constructor: inicializar una propiedad llamada _data_ a un array vacío
+- `populateData`: recibe un array con los datos iniciales y los carga en las clases. No devuelve nada
+- `addItem`: recibe un objeto con los datos del nuevo elemento (sin _id_) y lo añade al array. Devuelve el nuevo elemento añadido
+- `removeItem`: recibe una _id_ (o un _code_ si es un módulo) y lo elimina del array. Si no existe lanzará una excepción. Si intentamos eliminar un usuario o un módulo que tiene libros no se eliminará y también se lanzará una excepción. Devuelve un objeto vacío
+- `getItemById/getItemByCode`: recibe una _id_ (o un _code_ si es un módulo) y devuelve el elemento con dicha _id_ o un objeto vacío si no existe (para _users_ y _modules_ ya los tenemos hechos)
 - `toString` para mosotrar su contenido (que llamará al `toString` de cada elemento)
-- el resto de métodos hechos en el ejercicio anterior (`booksFromUser`, etc)
+- el resto de métodos hechos en el ejercicio anterior (`booksFromUser`, `getUserByNick`, etc)
 
 Al final de cada fichero de clase exportaremos la misma para poderla usar donde la necesitemos. En `book.class.js` será:
 ```javascript

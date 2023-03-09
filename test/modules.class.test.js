@@ -2,7 +2,7 @@ const Modules = require('../src/model/modules.class');
 
 let modules, module1, module2
 
-describe('Clase Modules: constructor y addItem', () => {
+describe('Clase Modules: constructor y crear módulos', () => {
 	test('Existe la clase Modules', () => {
 		expect(Modules).toBeDefined();
 	});
@@ -20,6 +20,22 @@ describe('Clase Modules: constructor y addItem', () => {
     expect(newModule.vliteral).toBe('Nou mòdul');
     expect(newModule.idCourse).toBe('12');
     expect(modules.data.length).toBe(1)
+  });
+
+  test('populateData añade un array de módulos', () => {
+    const data = [
+      { code: 'AAAA', cliteral: 'Nuevo módulo', vliteral: 'Nou mòdul', idCourse: '12' },
+      { code: 'BBAA', cliteral: 'Otro módulo', vliteral: 'Altre mòdul', idCourse: '1ert2' },
+    ]
+    const modules = new Modules()
+    modules.populateData(data)
+    expect(modules.data.length).toBe(2)
+    for (let i in modules.data) {
+      expect(modules.data[i]).toBeInstanceOf(Module)
+      for (let prop in modules.data[i]) {
+        expect(modules.data[i][prop]).toBe(data[i][prop])
+      }
+    }
   });
 })
 

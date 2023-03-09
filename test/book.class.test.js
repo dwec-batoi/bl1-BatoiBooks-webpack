@@ -2,6 +2,8 @@ const Book = require('../src/model/book.class');
 
 const payloadSold = {
   id: 31,
+  idUser: 2,
+  idModule: 'ABCD',
   publisher: "Apunts",
   price: 34,
   pages: 76,
@@ -10,45 +12,28 @@ const payloadSold = {
 }
 
 const payloadNotSold = {
-  id: 31,
+  id: 35,
+  idUser: 2,
+  idModule: 'ABCD',
   publisher: "Apunts",
   price: 34,
   pages: 76,
   status: "bad",
 }
 
-const myUser = { id: 2, nick: 'prova', email: 'prova@asd.es', password: '12' }
-
-const myModule = {
-  code: 'ABCD',
-  cliteral: 'Nuevo módulo',
-  vliteral: 'Nou mòdul',
-  idCourse: '12'
-}
-
 describe('Clase Book', () => {
   test('constructor crea un libro vendido', () => {
-    const newBook = new Book(payloadSold, myUser, myModule)
+    const newBook = new Book(payloadSold)
     expect(newBook).toBeInstanceOf(Book)
-    expect(newBook.id).toBe(payloadSold.id);
-    expect(newBook.myUser).toEqual(payloadSold.myUser);
-    expect(newBook.myModule).toEqual(payloadSold.myModule);
-    expect(newBook.publisher).toBe(payloadSold.publisher);
-    expect(newBook.price).toBe(payloadSold.price);
-    expect(newBook.pages).toBe(payloadSold.pages);
-    expect(newBook.status).toBe(payloadSold.status);
+    expect(newBook).toEqual(payloadSold)
   });
 
   test('constructor crea un libro no vendido', () => {
-    const newBook = new Book(payloadNotSold, myUser, myModule)
+    const newBook = new Book(payloadNotSold)
     expect(newBook).toBeInstanceOf(Book)
-    expect(newBook.id).toBe(payloadSold.id);
-    expect(newBook.myUser).toEqual(payloadSold.myUser);
-    expect(newBook.myModule).toEqual(payloadSold.myModule);
-    expect(newBook.publisher).toBe(payloadSold.publisher);
-    expect(newBook.price).toBe(payloadSold.price);
-    expect(newBook.pages).toBe(payloadSold.pages);
-    expect(newBook.status).toBe(payloadSold.status);
+    for (let prop in payloadSold) {
+      expect(newBook[prop]).toBe(payloadSold[prop])
+    }
     expect(newBook.soldDate).toBe('');
   });
 
