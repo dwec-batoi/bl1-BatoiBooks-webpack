@@ -1,6 +1,6 @@
-# Bloc 1: Javascript. UT 2: Arrays
+# Bloc 1: Javascript
 ## Proyecto BatoiBooks
-Vamos a hacer una aplicación para vender libros de texto y apuntes entre los estudantes del CIP FP Batoi. De momento los datos con los que trabaja la aplicación los tenemos en el fichero `datos.js` en una variable llamada `data` que contiene los siguientes campos:
+Vamos a hacer una aplicación para vender libros de texto y apuntes entre los estudiantes del CIP FP Batoi. De momento los datos con los que trabaja la aplicación los tenemos en el fichero `datos.js` en una variable llamada `data` que contiene los siguientes campos:
 - **courses**: son los distintos ciclos del centro. El campo _idFamily_ FK de la tabla _families_
 - **families**: los departamentos
 - **modules**: los distintos módulos que se estudian en cada ciclo. EL campo _idCourse_ es la FK de la tabla _courses_
@@ -24,3 +24,4 @@ En las distintas ramas irás encontrando diferentes ejercicios para realizar has
 - [**4-DOM**](./enunciados/4-DOM.md): la daremos una interfaz gráfica a la aplicación usando el patrón MVC
 - [**6-Events**](./enunciados/6-Events.md): permitiremos al usuario interactuar con nuestra aplicación desde la interfaz gráfica
 - **8-Ajax**: trabajaremos la persistencia de los datos
+- 
