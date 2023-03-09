@@ -19,9 +19,9 @@ Vamos a hacer una aplicación para vender libros de texto y apuntes entre los es
   - _solDate_: fecha de venta del libro, en formato YYYY-MM-DD. Si aún no está vendido este campo estará en blanco
 
 En las distintas ramas irás encontrando diferentes ejercicios para realizar hasta completar la aplicación. Las ramas que tienes son:
-- **2-Arrays**: mientras aprendemos a trabajar con _arrays_  y a usar _Funtional Programming_ crearemos funciones para trabajar con los datos de nuestra aplicación, especialmente con los libros
-- **3-Clases**: mejoraremos la aplicación creando clases para los diferentes objetos de la aplicación
-- **4-DOM**: la daremos una interfaz gráfica a la aplicación usando el patrón MVC
-- **6-Events**: permitiremos al usuario interactuar con nuestra aplicación desde la interfaz gráfica
+- [**2-Arrays**](./enunciados/2-Arrays.md): mientras aprendemos a trabajar con _arrays_  y a usar _Funtional Programming_ crearemos funciones para trabajar con los datos de nuestra aplicación, especialmente con los libros
+- [**3-Clases**](./enunciados/3-Clases.md): mejoraremos la aplicación creando clases para los diferentes objetos de la aplicación
+- [**4-DOM**](./enunciados/4-DOM.md): la daremos una interfaz gráfica a la aplicación usando el patrón MVC
+- [**6-Events**](./enunciados/6-Events.md): permitiremos al usuario interactuar con nuestra aplicación desde la interfaz gráfica
 - **8-Ajax**: trabajaremos la persistencia de los datos
 - 
