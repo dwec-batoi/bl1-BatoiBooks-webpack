@@ -3,7 +3,7 @@ const User = require('../src/model/user.class');
 
 let users, user1, user2
 
-describe('Clase users: constructor y crear usuarios', () => {
+describe('Clase Users', () => {
 	test('Existe la clase Users', () => {
 		expect(Users).toBeDefined();
 	});
@@ -62,7 +62,7 @@ describe('Clase users: constructor y crear usuarios', () => {
   });
 })
 
-describe('Clase users: removeItem y toString', () => {
+describe('Clase Users', () => {
   beforeEach(() => {
     users = new Users()
     user1 = users.addItem({ email: 'asd@asd.es', nick: 'dsa' })

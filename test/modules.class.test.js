@@ -3,7 +3,7 @@ const Module = require('../src/model/module.class');
 
 let modules, module1, module2
 
-describe('Clase Modules: constructor y crear módulos', () => {
+describe('Clase Modules', () => {
 	test('Existe la clase Modules', () => {
 		expect(Modules).toBeDefined();
 	});
@@ -41,7 +41,7 @@ describe('Clase Modules: constructor y crear módulos', () => {
   });
 })
 
-describe('Clase Modules: removeItem y toString', () => {
+describe('Clase Modules', () => {
   beforeEach(() => {
     modules = new Modules()
     module1 = modules.addItem({ code: 'AAAA', cliteral: 'Nuevo módulo', vliteral: 'Nou mòdul', idCourse: '12' })

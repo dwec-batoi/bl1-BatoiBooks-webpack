@@ -64,10 +64,11 @@ describe('Clase Books', () => {
   test('populateData añade un array de libros', () => {
     const dataWithId = data.slice()
     dataWithId[0].id = 35
-    dataWithId[0].id = 31
+    dataWithId[1].id = 31
+    dataWithId[2].id = 3
     const books = new Books()
     books.populateData(data)
-    expect(books.data.length).toBe(2)
+    expect(books.data.length).toBe(3)
     for (let i in data) {
       expect(books.data[i]).toBeInstanceOf(Book)
       expect(books.data[i].id).toBe(dataWithId[i].id)
@@ -81,10 +82,11 @@ describe('Clase Books', () => {
     const dataWithId = data.slice()
     dataWithId[0].id = 35
     dataWithId[0].id = 31
+    dataWithId[2].id = 3
     const books = new Books()
     books.populateData(dataWithId)
     let newUser = books.addItem(data[1])
-    expect(books.data.length).toBe(3)
+    expect(books.data.length).toBe(4)
     expect(newUser.id).toBe(36);
   });
 })
@@ -148,7 +150,7 @@ describe('Clase Books', () => {
     const response = books.booksFromModule('ABCD')
     expect(response.length).toBe(2)
     for (let item of response) {
-      expect(item.idModule).toBe(2)
+      expect(item.idModule).toBe('ABCD')
     }
   })
 
@@ -157,11 +159,11 @@ describe('Clase Books', () => {
     expect(response).toEqual([])
   })
 
-  test('booksCheeperThan devuelve un array con los 2 libros de menos de 50 €', () => {
+  test('booksCheeperThan devuelve un array con los 2 libros de 50 € o menos', () => {
     const response = books.booksCheeperThan(50)
     expect(response.length).toBe(2)
     for (let item of response) {
-      expect(item.price).toBeNotGreaterThanOrEqual(50)
+      expect(item.price).not.toBeGreaterThan(50)
     }
   })
 
@@ -183,10 +185,9 @@ describe('Clase Books', () => {
     expect(response).toEqual([])
   })
 
-  test('averagePriceOfBooks devuelve 21.25 €', () => {
+  test('averagePriceOfBooks devuelve 32.33 €', () => {
     const response = books.averagePriceOfBooks()
-    expect(response).toBe('21.25 €')
-    expect(response.publisher).toBe('Apunts')
+    expect(response).toBeCloseTo('32.33 €')
   })
 
   test('booksOfTypeNote devuelve un array con el registro de apuntes', () => {
@@ -199,7 +200,7 @@ describe('Clase Books', () => {
     const response = books.booksNotOfTypeNote()
     expect(response.length).toBe(2)
     for (let item of response) {
-      expect(item.phblisher).toBeNot('Apunts')
+      expect(item.phblisher).not.toBe('Apunts')
     }
   })
 })
