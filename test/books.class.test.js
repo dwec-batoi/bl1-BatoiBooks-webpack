@@ -1,7 +1,7 @@
 const Books = require('../src/model/books.class');
 const Book = require('../src/model/book.class');
 
-let books, book1, book2
+let books, book1, book2, book3
 const data = [
   {
     idUser: 2,
@@ -30,7 +30,7 @@ const data = [
   },
 ]
 
-describe('Clase books: constructor y addItem', () => {
+describe('Clase Books', () => {
 	test('Existe la clase Books', () => {
 		expect(Books).toBeDefined();
 	});
@@ -44,7 +44,7 @@ describe('Clase books: constructor y addItem', () => {
     const books = new Books()
     const newBook = books.addItem(data[0])
     expect(books.data.length).toBe(1)
-    expect(newModule).toBeInstanceOf(Book)
+    expect(newBook).toBeInstanceOf(Book)
     expect(newBook.id).toBe(1);
     for (let prop in data[0]) {
       expect(newBook[prop]).toBe(data[0][prop])
@@ -66,7 +66,7 @@ describe('Clase books: constructor y addItem', () => {
     dataWithId[0].id = 35
     dataWithId[0].id = 31
     const books = new Books()
-    users.populateData(data)
+    books.populateData(data)
     expect(books.data.length).toBe(2)
     for (let i in data) {
       expect(books.data[i]).toBeInstanceOf(Book)
@@ -89,7 +89,7 @@ describe('Clase books: constructor y addItem', () => {
   });
 })
 
-describe('Clase books: removeItem, incrementPrice y toString', () => {
+describe('Clase Books', () => {
   beforeEach(() => {
     books = new Books()
     book1 = books.addItem(data[0])
@@ -117,17 +117,18 @@ describe('Clase books: removeItem, incrementPrice y toString', () => {
   });
 
   test('toString pinta correctamente los libros', () => {
-    expect(books.toString()).toBe(`Usuarios (total ${books.data.length})
-    - ${book1.nick} (${book1.id}) - ${book1.email}
-    - ${book2.nick} (${book2.id}) - ${book2.email}`)
+    expect(books.toString()).toBe(`Libros (total ${books.data.length})
+    - ${book1.idModule}. Editorial: ${book1.publisher}. ${book1.pages} páginas. ${book1.price.toFixed(2)} €.
+    - ${book2.idModule}. Editorial: ${book2.publisher}. ${book2.pages} páginas. ${book2.price.toFixed(2)} €.`)
   });
 })
 
-describe('Clase books: métodos propios', () => {
+describe('Clase Books', () => {
   beforeAll(() => {
     books = new Books()
     book1 = books.addItem(data[0])
     book2 = books.addItem(data[1])
+    book3 = books.addItem(data[2])
   })
 
   test('booksFromUser devuelve un array con los 2 libros del usuario 2', () => {
@@ -160,7 +161,7 @@ describe('Clase books: métodos propios', () => {
     const response = books.booksCheeperThan(50)
     expect(response.length).toBe(2)
     for (let item of response) {
-      expect(item.price).toBeLowerThan(50)
+      expect(item.price).toBeNotGreaterThanOrEqual(50)
     }
   })
 
@@ -173,7 +174,7 @@ describe('Clase books: métodos propios', () => {
     const response = books.booksWithStatus('bad')
     expect(response.length).toBe(2)
     for (let item of response) {
-      expect(item.phblisher).toBe('bad')
+      expect(item.status).toBe('bad')
     }
   })
 
@@ -182,16 +183,16 @@ describe('Clase books: métodos propios', () => {
     expect(response).toEqual([])
   })
 
-  test('averagePriceOfBooks devuelve 32.33 €', () => {
+  test('averagePriceOfBooks devuelve 21.25 €', () => {
     const response = books.averagePriceOfBooks()
-    expect(response).toBe('32.33 €')
+    expect(response).toBe('21.25 €')
     expect(response.publisher).toBe('Apunts')
   })
 
-  test('booksOfTypeNote devuelve un array con el libro de apuntes', () => {
+  test('booksOfTypeNote devuelve un array con el registro de apuntes', () => {
     const response = books.booksOfTypeNote()
     expect(response.length).toBe(1)
-    expect(response.publisher).toBe('Apunts')
+    expect(response[0].publisher).toBe('Apunts')
   })
 
   test('booksNotOfTypeNote devuelve un array con los 2 libro de editorial', () => {
