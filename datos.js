@@ -1839,25 +1839,21 @@ const data = {
     {
       "id": 2,
       "email": "ignasi.gomis.mullor@gmail.com",
-      "nick": "Ignasi",
-      "password": "81dc9bdb52d04dc20036dbd8313ed055"
+      "nick": "Ignasi"
     },
     {
       "email": "juanseguravasco@gmail.com",
       "nick": "Juan",
-      "password": "",
       "id": 3
     },
     {
       "email": "marta@gmail.lan",
       "nick": "Marta",
-      "password": "",
       "id": 4
     },
     {
       "email": "Ximo@gmail.lan",
       "nick": "Ximo",
-      "password": "",
       "id": 5
     }
   ],
