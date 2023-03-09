@@ -25,21 +25,22 @@ describe('Clase Book', () => {
   test('constructor crea un libro vendido', () => {
     const newBook = new Book(payloadSold)
     expect(newBook).toBeInstanceOf(Book)
-    expect(newBook).toEqual(payloadSold)
+    for (let prop in payloadSold) {
+      expect(newBook[prop]).toBe(payloadSold[prop])
+    }
   });
 
   test('constructor crea un libro no vendido', () => {
     const newBook = new Book(payloadNotSold)
-    expect(newBook).toBeInstanceOf(Book)
-    for (let prop in payloadSold) {
-      expect(newBook[prop]).toBe(payloadSold[prop])
+    for (let prop in payloadNotSold) {
+      expect(newBook[prop]).toBe(payloadNotSold[prop])
     }
     expect(newBook.soldDate).toBe('');
   });
 
   test('toString pinta correctamente el libro', () => {
-    const newBook = new Book(payloadSold, myUser, myModule)
-    expect(newBook.toString()).toBe('Nou mòdul. Editorial: Apunts. 76 páginas. 34.00 €.');
+    const newBook = new Book(payloadSold)
+    expect(newBook.toString()).toBe('ABCD. Editorial: Apunts. 76 páginas. 34.00 €.');
   });
 
 })

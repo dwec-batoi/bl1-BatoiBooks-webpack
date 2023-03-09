@@ -1,4 +1,5 @@
 const Users = require('../src/model/users.class');
+const User = require('../src/model/user.class');
 
 let users, user1, user2
 
@@ -16,6 +17,7 @@ describe('Clase users: constructor y crear usuarios', () => {
     const users = new Users()
     const newUser = users.addItem({ email: 'asd@asd.es', nick: 'dsa' })
     expect(users.data.length).toBe(1)
+    expect(newModule).toBeInstanceOf(User)
     expect(newUser.id).toBe(1);
     expect(newUser.email).toBe('asd@asd.es');
     expect(newUser.nick).toBe('dsa');
@@ -38,7 +40,7 @@ describe('Clase users: constructor y crear usuarios', () => {
       { id:3, email: 'usr@usr.es', nick: 'rsu' },
     ])
     expect(users.data.length).toBe(2)
-    for (let i in modules.data) {
+    for (let i in users.data) {
       expect(users.data[i]).toBeInstanceOf(User)
       for (let prop in users.data[i]) {
         expect(users.data[i][prop]).toBe(data[i][prop])
@@ -47,22 +49,23 @@ describe('Clase users: constructor y crear usuarios', () => {
   });
 
   test('addItem asigna id a partir de la última existente', () => {
-    const users = new Users()
-    users.populateData([
+    const data = [
       { id:7, email: 'asd@asd.es', nick: 'dsa' },
       { id:3, email: 'usr@usr.es', nick: 'rsu' },
-    ])
+    ]
+    const users = new Users()
+    users.populateData(data)
     let newUser = users.addItem({ email: 'qwe@qwe.es', nick: 'ewq' })
     expect(users.data.length).toBe(3)
     expect(newUser.id).toBe(8);
   });
 })
 
-describe('Clase users: métodos', () => {
+describe('Clase users: removeItem y toString', () => {
   beforeEach(() => {
     users = new Users()
-    user1 = users.addItem({ email: 'asd@asd.es', nick: 'dsa', password: '12' })
-    user2 = users.addItem({ email: 'usr@usr.es', nick: 'rsu', password: '1ko2' })
+    user1 = users.addItem({ email: 'asd@asd.es', nick: 'dsa' })
+    user2 = users.addItem({ email: 'usr@usr.es', nick: 'rsu' })
   })
 
   test('removeItem elimina un usuario si existe', () => {

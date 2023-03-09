@@ -1,4 +1,5 @@
 const Modules = require('../src/model/modules.class');
+const Module = require('../src/model/module.class');
 
 let modules, module1, module2
 
@@ -15,6 +16,7 @@ describe('Clase Modules: constructor y crear módulos', () => {
   test('addItem añade un nuevo módulo', () => {
     const modules = new Modules()
     const newModule = modules.addItem({ code: 'AAAA', cliteral: 'Nuevo módulo', vliteral: 'Nou mòdul', idCourse: '12' })
+    expect(newModule).toBeInstanceOf(Module)
     expect(newModule.code).toBe('AAAA');
     expect(newModule.cliteral).toBe('Nuevo módulo');
     expect(newModule.vliteral).toBe('Nou mòdul');
@@ -39,7 +41,7 @@ describe('Clase Modules: constructor y crear módulos', () => {
   });
 })
 
-describe('Clase Modules: métodos', () => {
+describe('Clase Modules: removeItem y toString', () => {
   beforeEach(() => {
     modules = new Modules()
     module1 = modules.addItem({ code: 'AAAA', cliteral: 'Nuevo módulo', vliteral: 'Nou mòdul', idCourse: '12' })
