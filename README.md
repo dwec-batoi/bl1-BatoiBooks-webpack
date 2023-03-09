@@ -18,6 +18,7 @@ Como parte de una aplicación para vendre libros de texto y apuntes vamos a hace
   - _comments_: comentarios
   - _solDate_: fecha de venta del libro, en formato YYYY-MM-DD. Si aún no está vendido este campo estará en blanco
 
+<<<<<<< HEAD
 Para poder pasar los tests a nuestro programa y comprobar si funciona repartiremos el código en 2 ficheros JS distintos dentro del directorio `/src`:
 - **`index.js`**: es el programa principal que contiene los datos, hace llamadas a las funciones y muestra datos por la consola
 - **`functions.js`**: este fichero contiene las funciones
@@ -68,3 +69,12 @@ En el fichero _**index.html**_ deberemos enlazar los 3 scripts: primero el _dato
 **RECUERDA**: seguir haciendo todas las buenas prácticas que se indicaban en el ejercicio anterior.
 
 **MUY IMPORTANTE**: pasa los tests para asegurarte aprobar este ejercicio.
+=======
+En las distintas ramas irás encontrando diferentes ejercicios para realizar hasta completar la aplicación. Las ramas que tienes son:
+- [**2-Arrays**](./enunciados/2-Arrays.md): mientras aprendemos a trabajar con _arrays_  y a usar _Funtional Programming_ crearemos funciones para trabajar con los datos de nuestra aplicación, especialmente con los libros
+- [**3-Clases**](./enunciados/3-Clases.md): mejoraremos la aplicación creando clases para los diferentes objetos de la aplicación
+- [**4-DOM**](./enunciados/4-DOM.md): la daremos una interfaz gráfica a la aplicación usando el patrón MVC
+- [**6-Events**](./enunciados/6-Events.md): permitiremos al usuario interactuar con nuestra aplicación desde la interfaz gráfica
+- **8-Ajax**: trabajaremos la persistencia de los datos
+- 
+>>>>>>> main
