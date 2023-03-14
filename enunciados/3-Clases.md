@@ -1,4 +1,4 @@
-# Bloc 1: Javascript. UT 2: Arrays
+# Bloc 1: Javascript. UT 3: Clases
 ## Ejercicio 3.2 - Clases en BatoiBooks
 Continuando con nuestra aplicación para vender libros de texto y apuntes vamos a construir las clases que usaremos en la aplicación. Recordad que los datos con los que trabaja la aplicación los tenemos en el fichero `datos.js` en una variable llamada `data`.
 
