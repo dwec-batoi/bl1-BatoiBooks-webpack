@@ -1,0 +1,40 @@
+# Bloc 1: Javascript. UT : Ajax
+## Ejercicio . - Persistencia en BatoiBooks
+Continuando con nuestra aplicación para vender libros de texto y apuntes vamos a darle persistencia a nuestros datos para que se almacenen en una base de datos (hasta ahora los datos con los que trabaja la aplicación los teníamos en el fichero `datos.js` en una variable llamada `data`).
+
+Para ello necesitaremos una API que nos permita interactuar con la base de datos que almacena la información. Como aún no la hemos hecho en el módulo de DWES de momento usaremos `json-server` como nuestra API.
+
+Los encargados de hacer las llamadas a la BBDD serán los métodos del modelo que modifican los datos. Recordad que SIEMPRE deben cambiarse primero los datos en la BBDD y, sólo cuando tengamos confirmación de ese cambio, los cambiaremos en la aplicación.
+
+Para simplificar las llamadas usaremos `fetch` y podemos usarlo con _promesas_ o con `async/await`, como prefiráis.
+
+Crearemos dentro de `src/` un fichero llamado `apiservice.js` (o mejor aún `apiservice/index.js`) desde donde creareos los métodos que llamen a `fetch`, de forma que para hacer una llamada a la BBDD en nuestras clases sólo tengamos que poner algo como:
+```javascript
+const response = await apiservice.modules.getAll()
+...
+```
+
+o 
+
+```javascript
+apiservice.users.save(user)
+.then(response => ...)
+...
+```
+
+Para trabajar con las tablas _users_ y _books_ haremos los métodos:
+- `getAll()`: para obtener todos los registros de cada tabla
+- `getById(id)`: para obtener un registro pasándole su _id_
+- `save(item)`: para guardar el registro que le pasamos (si tiene _id_ hará un `PUT` y si no hará un `POST`)
+- `delete(id)`: para eliminar el registro con la _id_ que le pasamos
+
+En el caso de los _modules_ sólo haremos los métodos `getAll()` y `getByCode(code)` ya que estos datos nunca cambian.
+
+Cuando tengamos estos métodos modificaremos las clases _users_ y _books_ para utilizarlos.
+
+Por su parte el `/src/index.js` lo que hará es:
+- cargar los datos de la BBDD en nuestras clases
+- mostrar por consola todos los usuarios
+- añadir un nuevo usuario
+- mostrar todos los libros del usuario creado
+- mostrar todos los libros del módulo 5021 que están en buen estado ("good")

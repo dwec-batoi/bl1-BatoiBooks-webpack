@@ -1,7 +1,8 @@
 const Books = require('../src/model/books.class');
 const Book = require('../src/model/book.class');
+const apiService = require('../src/apiservice');
 
-let books, book1, book2, book3
+let books
 const data = [
   {
     idUser: 2,
@@ -34,76 +35,78 @@ describe('Clase Books', () => {
 	test('Existe la clase Books', () => {
 		expect(Books).toBeDefined();
 	});
-  
-  test('constructor crea el array en la propiedad data', () => {
-    const books = new Books()
-    expect(books.data).toEqual([]);
-  });
-  
-  test('addItem añade un nuevo libro', () => {
-    const books = new Books()
-    const newBook = books.addItem(data[0])
-    expect(books.data.length).toBe(1)
-    expect(newBook).toBeInstanceOf(Book)
-    expect(newBook.id).toBe(1);
-    for (let prop in data[0]) {
-      expect(newBook[prop]).toBe(data[0][prop])
-    }
-  });
-
-  test('addItem asigna id consecutivas sin repetir', () => {
-    const books = new Books()
-    let newBook = books.addItem(data[0])
-    expect(books.data.length).toBe(1)
-    expect(newBook.id).toBe(1);
-    newBook = books.addItem(data[1])
-    expect(books.data.length).toBe(2)
-    expect(newBook.id).toBe(2);
-  });
-
-  test('populateData añade un array de libros', () => {
-    const dataWithId = data.slice()
-    dataWithId[0].id = 35
-    dataWithId[1].id = 31
-    dataWithId[2].id = 3
-    const books = new Books()
-    books.populateData(data)
-    expect(books.data.length).toBe(3)
-    for (let i in data) {
-      expect(books.data[i]).toBeInstanceOf(Book)
-      expect(books.data[i].id).toBe(dataWithId[i].id)
-      for (let prop in data[i]) {
-        expect(books.data[i][prop]).toBe(data[i][prop])
-      }
-    }
-  })
-
-  test('addItem asigna id a partir de la última existente', () => {
-    const dataWithId = data.slice()
-    dataWithId[0].id = 35
-    dataWithId[1].id = 31
-    dataWithId[2].id = 3
-    const books = new Books()
-    books.populateData(dataWithId)
-    let newUser = books.addItem(data[1])
-    expect(books.data.length).toBe(4)
-    expect(newUser.id).toBe(36);
-  });
-})
+});
 
 describe('Clase Books', () => {
   beforeEach(() => {
     books = new Books()
-    book1 = books.addItem(data[0])
-    book2 = books.addItem(data[1])
+  });
+  afterEach(() => {
+    // restore the spy created with spyOn
+    jest.restoreAllMocks();
+  });
+  
+  test('constructor crea el array en la propiedad data', () => {
+    expect(books.data).toEqual([]);
+  });
+  
+  test('addItem añade un nuevo libro', async () => {
+    const MOCKED_ID = 7
+    jest.spyOn(apiService.books, 'save').mockResolvedValue({id: MOCKED_ID, ...data[0]});
+    const newBook = await books.addItem(data[0])
+    expect(books.data.length).toBe(1)
+    expect(newBook).toBeInstanceOf(Book)
+    expect(newBook.id).toBe(MOCKED_ID);
+    for (let prop in data[0]) {
+      expect(newBook[prop]).toBe(data[0][prop])
+    }
+    expect(newBook).toEqual(books.data[0])
+  });
+
+  test('populateData añade un array de libros', () => {
+    const dataWithId = JSON.parse(JSON.stringify(data))
+    dataWithId[0].id = 35
+    dataWithId[1].id = 31
+    dataWithId[2].id = 3
+    books.populateData(dataWithId)
+    expect(books.data.length).toBe(3)
+    for (let i in dataWithId) {
+      expect(books.data[i]).toBeInstanceOf(Book)
+      expect(books.data[i].id).toBe(dataWithId[i].id)
+      for (let prop in dataWithId[i]) {
+        expect(books.data[i][prop]).toBe(dataWithId[i][prop])
+      }
+    }
   })
 
-  test('removeItem elimina un libro si existe', () => {
-    const bookToRemove = books.removeItem(book2.id)
+})
+
+describe('Clase Books', () => {
+  beforeEach(async () => {
+    books = new Books()
+    jest.spyOn(apiService.books, 'save').mockResolvedValue({id: 7, ...data[0]});
+    await books.addItem(data[0])
+    jest.spyOn(apiService.books, 'save').mockResolvedValue({id: 3, ...data[1]});
+    await books.addItem(data[1])
+  });
+  afterEach(() => {
+    // restore the spy created with spyOn
+    jest.restoreAllMocks();
+  });
+
+  test('removeItem elimina un libro si existe', async () => {
+    jest.spyOn(apiService.books, 'delete').mockResolvedValue({});
+    const bookToRemove = await books.removeItem(3)
     expect(bookToRemove).toEqual({});
     expect(books.data.length).toBe(1);
-    books.removeItem(book1.id)
+    await books.removeItem(7)
     expect(books.data.length).toBe(0);
+  });
+
+  test('removeItem lanza una excepción si un libro no existe', async () => {
+    jest.spyOn(apiService.books, 'delete').mockRejectedValue('DB error');
+    await expect(books.removeItem(100)).rejects.toBe('DB error');
+    expect(books.data.length).toBe(2);
   });
 
   test('incrementPriceOfbooks incrementa el precio un 10%', () => {
@@ -113,25 +116,27 @@ describe('Clase Books', () => {
     expect(books.data[1].price).toBe(15.95)
   });
 
-  test('removeItem lanza una excepción si un libro no existe', () => {
-    expect(() => books.removeItem(100)).toThrow();
-    expect(books.data.length).toBe(2);
-  });
-
   test('toString pinta correctamente los libros', () => {
     expect(books.toString()).toBe(`Libros (total ${books.data.length})
-    - ${book1.idModule}. Editorial: ${book1.publisher}. ${book1.pages} páginas. ${book1.price.toFixed(2)} €.
-    - ${book2.idModule}. Editorial: ${book2.publisher}. ${book2.pages} páginas. ${book2.price.toFixed(2)} €.`)
+    - ${data[0].idModule}. Editorial: ${data[0].publisher}. ${data[0].pages} páginas. ${data[0].price.toFixed(2)} €.
+    - ${data[1].idModule}. Editorial: ${data[1].publisher}. ${data[1].pages} páginas. ${data[1].price.toFixed(2)} €.`)
   });
 })
 
 describe('Clase Books', () => {
-  beforeAll(() => {
+  beforeEach(async () => {
     books = new Books()
-    book1 = books.addItem(data[0])
-    book2 = books.addItem(data[1])
-    book3 = books.addItem(data[2])
-  })
+    jest.spyOn(apiService.books, 'save').mockResolvedValue({id: 7, ...data[0]});
+    await books.addItem(data[0])
+    jest.spyOn(apiService.books, 'save').mockResolvedValue({id: 3, ...data[1]});
+    await books.addItem(data[1])
+    jest.spyOn(apiService.books, 'save').mockResolvedValue({id: 5, ...data[2]});
+    await books.addItem(data[2])
+  });
+  afterEach(() => {
+    // restore the spy created with spyOn
+    jest.restoreAllMocks();
+  });
 
   test('booksFromUser devuelve un array con los 2 libros del usuario 2', () => {
     const response = books.booksFromUser(2)
