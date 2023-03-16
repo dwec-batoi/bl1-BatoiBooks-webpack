@@ -37,4 +37,4 @@ Por su parte el `/src/index.js` lo que hará es:
 - mostrar por consola todos los usuarios
 - añadir un nuevo usuario
 - mostrar todos los libros del usuario creado
-- mostrar todos los libros del módulo 5021 que están en buen estado ("good")
+- mostrar todos los libros del módulo 5021
