@@ -1,0 +1,74 @@
+# Bloc 1: Javascript. UT : Ajax
+## Ejercicio . - Persistencia en BatoiBooks
+En esta fase vamos a crear la interfaz gráfica para que los usuarios puedan interactuar con nuestra aplicación.
+
+Para dar un mejor aspecto a la página con poco trabajo utilizaremos **_bootstrap_** (ya tenéis enlazado su CDN en nuestra página _index.html_, tanto el CSS como el JS para poder usar el acordeón).
+
+Las tareas a realizar son:
+
+### HTML
+En el _index.html_ debemos hacer:
+- debemos acabar el formulario de añadir libros
+  - hacer los select para introducir usuario y módulo
+  - poner atributos a los campos para que cumplan las validaciones necesarias (campos obligatorios, enteros, mayores que 0, ...)
+  - acabar de hacer los _radio buttons_ del estado del libro
+  - podemos poner atributos 'id' a los elementos que deseemos para facilitarnos el acceso a ellos desde el código JS
+- el formulario de añadir usuarios
+- eliminar el mensaje de ejemplo del DIV _messages_
+- eliminar los 2 libros de ejemplo del TBODY. Al cargar la página estarán vacíos y serán métodos de la vista los encargados de rellenarlos.
+
+### Javascript
+Para hacer nuestra aplicación seguiremos el patrón MVC. 
+
+#### Modelo
+El modelo ya lo tenemos hecho, sólo faltaría hacer una clase _Messages_ que almacene los mensajes a mostrar al usuario
+
+#### Vista
+Esta clase no tiene propiedades, sólo métodos que reciben del controlador unos datos (un libro o usuario a añadir o a eliminar) y modifica la página para reflejar esos datos.
+
+Además debe tener un método para pintar el mensaje pasado por el controlador... y algún método más.
+
+#### Controlador
+Esta clase tendrá 2 propiedades:
+- **store**: almacenará una instancia de la clase 'Store' donde guardar los datos del modelo
+- **view**: será una instancia de la clase 'View'
+
+Tendrá un método para cada una de las 4 acciones que puede realizar el usuario: añadir libro, añadir usuario, eliminar libro y eliminar usuario.
+
+Los de añadir recibirán un objeto (_payload_) con los datos recogidos del formulario. Por ejemplo el de añadir usuarios recibirá:
+```javascript
+{
+  nick: ???,
+  email: ???
+}
+```
+
+Los de eliminar recibirán directamente la _id_ recogida del formulario.
+
+Recuerda que lo que se lee de un input es siempre texto.
+
+Lo que debe hacer cada método del controlador es:
+- validar los datos recibidos
+- si los datos no son válidos
+  - mostrar un mensaje de error en la página
+- si lo son
+  - llamar al método correspondiente de la clase 'Store'
+  - si se realiza la operación correctamente
+    - llamar al método de la vista que refleje el cambio en la página
+  - si se produce algún error
+    - mostrar el mensaje de error en la página
+
+#### index.js
+Es el fichero principal y se encarga de:
+- instanciar e inicializar un controlador
+- poner los escuchadores para los botones de enviar los formularios
+
+Tenéis el código del escuchador del formulario de añadir libro al que falta por hacer:
+- leer los datos del formulario (sólo lee 1)
+- llamar al método adecuado del constructor pasándole un objeto con los datos leídos
+
+Deberéis hacer de igual modo las funciones escuchadoras para el otro formulario.
+
+### Recuerda...
+- Nunca deben llegar a la consola errores JS, siempre debes capturarlos en algún sitio dentro de una sentencia `try...catch`. Aquí los errores deben llegar al controlador que dirá a la vista que los muestre como un nuevo mensaje en la página.
+- seguiremos usando _webpack_ para evitar tener tantos ficheros enlazados en el HTML
